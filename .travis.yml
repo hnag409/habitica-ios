@@ -1,17 +1,17 @@
 language: objective-c
 cache: cocoapods
 osx_image: xcode8.2
+rvm:
+  - 2.2
 install:
-  - rvm install ruby-2.2.2
-  - gem install cocoapods
+  - bundle install
   - gem install xcpretty -N
   - gem install xcpretty-travis-formatter
-  - gem install cocoapods-keys -v 1.7.0
   - brew update
   - brew install swiftlint || true
-  - brew upgrade swiftlint || true
-  - pod repo update
-  - pod install
+  - brew outdated swiftlint || brew upgrade swiftlint
+  - bundle exec pod repo update
+  - bundle exec pod install
 env:
   global:
     - GoogleClient=123
